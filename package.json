@@ -1,6 +1,7 @@
 {
   "name": "html_content_parser",
   "version": "1.0.0",
+  "description": "Reads public HTML document and parses contents of the table.",
   "private": true,
   "main": "src/index.mjs",
   "scripts": {
@@ -9,9 +10,16 @@
     "eslint": "eslint src",
     "lint:fix": "npm-run-all prettier eslint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/altoinu/html_content_parser.git"
+  },
   "author": "Kaoru Kawashima",
   "license": "ISC",
-  "description": "",
+  "bugs": {
+    "url": "https://github.com/altoinu/html_content_parser/issues"
+  },
+  "homepage": "https://github.com/altoinu/html_content_parser#readme",
   "type": "module",
   "dependencies": {
     "axios": "^1.7.7",
