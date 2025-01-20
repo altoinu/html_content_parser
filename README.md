@@ -1,4 +1,4 @@
-# googledoc_parser
+# html_content_parser
 Reads public Google Doc document and parses contents of the table.
 
 ## Writing README stuff
