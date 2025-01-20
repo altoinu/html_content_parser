@@ -1,5 +1,5 @@
 # html_content_parser
-Reads public Google Doc document and parses contents of the table.
+Reads public HTML document and parses contents of the table.
 
 ## Writing README stuff
 [https://help.github.com/en/articles/basic-writing-and-formatting-syntax](https://help.github.com/en/articles/basic-writing-and-formatting-syntax)
