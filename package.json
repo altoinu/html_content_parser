@@ -5,9 +5,9 @@
   "private": true,
   "main": "src/index.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prettier": "prettier --write \"**/*.{css,js,cjs,mjs}\"",
     "eslint": "eslint src",
+    "prettier": "prettier --write \"**/*.{md,css,js,cjs,mjs}\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "lint:fix": "npm-run-all prettier eslint"
   },
   "repository": {
