@@ -25,40 +25,36 @@ async function parseGridData(docUrl) {
 
     // Iterate through each table row
     table.find("tr").each((rowIndex, row) => {
-      const rowData = [];
-
       // Iterate through each table cell (column) in the row
+      let x;
+      let y;
+      let char;
+
       $(row)
         .find("td")
         .each((colIndex, cell) => {
-          rowData.push($(cell).text().trim());
+          if (colIndex === 0) {
+            // x-coordinate
+            x = $(cell).text().trim();
+          } else if (colIndex === 1) {
+            // character
+            char = $(cell).text().trim();
+          } else {
+            // y-coordinate
+            y = $(cell).text().trim();
+          }
         });
 
-      gridData.push(rowData);
+      if (gridData[y] === undefined) gridData[y] = [];
+      if (gridData[y][x] === undefined) gridData[y][x] = [];
+
+      gridData[y][x] = char;
     });
 
     return gridData;
   } catch (error) {
     console.error("Error parsing grid data:", error);
   }
-}
-
-function orderGridData(gridData) {
-  const newGridData = [];
-
-  // Iterate through to arrange coordinates in order
-  for (let i = 1; i < gridData.length; i++) {
-    // Coordinates
-    let x = Number(gridData[i][0]);
-    let y = Number(gridData[i][2]);
-
-    if (newGridData[y] == undefined) newGridData[y] = [];
-
-    // Arrange by row (y) then column (x)
-    newGridData[y][x] = gridData[i][1];
-  }
-
-  return newGridData;
 }
 
 function parseGridRowData(gridRow) {
@@ -74,14 +70,12 @@ function parseGridRowData(gridRow) {
 
 async function main(docUrl) {
   const gridData = await parseGridData(docUrl);
-  const orderedGridData = orderGridData(gridData);
 
   let outputText = "";
 
   // Iterate from highest y coordinate to bottom
-  for (let i = orderedGridData.length - 1; i >= 0; i--) {
-    outputText +=
-      (orderedGridData[i] ? parseGridRowData(orderedGridData[i]) : "") + "\n";
+  for (let i = gridData.length - 1; i >= 0; i--) {
+    outputText += (gridData[i] ? parseGridRowData(gridData[i]) : "") + "\n";
   }
 
   console.log(outputText);
