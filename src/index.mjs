@@ -72,15 +72,19 @@ function parseGridRowData(gridRow) {
   return rowChars;
 }
 
-const gridData = await parseGridData(docUrl);
-const orderedGridData = orderGridData(gridData);
+async function main(docUrl) {
+  const gridData = await parseGridData(docUrl);
+  const orderedGridData = orderGridData(gridData);
 
-let outputText = "";
+  let outputText = "";
 
-// Iterate from highest y coordinate to bottom
-for (let i = orderedGridData.length - 1; i >= 0; i--) {
-  outputText +=
-    (orderedGridData[i] ? parseGridRowData(orderedGridData[i]) : "") + "\n";
+  // Iterate from highest y coordinate to bottom
+  for (let i = orderedGridData.length - 1; i >= 0; i--) {
+    outputText +=
+      (orderedGridData[i] ? parseGridRowData(orderedGridData[i]) : "") + "\n";
+  }
+
+  console.log(outputText);
 }
 
-console.log(outputText);
+main(docUrl);
